@@ -12,5 +12,9 @@ void main() {
   }
   
   
+  // Same part of the code, but without sense since the variable is a boolean
+  if ( activado == true ) {
+    print('El motor esta funcionando');
+  } 
   
 }
