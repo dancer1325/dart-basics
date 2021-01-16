@@ -6,7 +6,11 @@ abstract class Ave extends Animal { }
 
 abstract class Pez extends Animal { }
 
-
+//The next 3 classes are the mixins
+//You can use both reserved words to define a mixin class
+// abstract mixin Volador {
+//   void volar() => print('Estoy volando!!');
+// }
 abstract class Volador {
   void volar() => print('Estoy volando!!');
 }
@@ -39,6 +43,8 @@ void main() {
   
   final pato = new Pato();
   pato.volar();
+  pato.caminar();
+  pato.nadar();
   
   final pezVolador = new PezVolador();
   pezVolador.nadar();
