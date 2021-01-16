@@ -17,7 +17,7 @@ String saludar( texto,  nombre ) {
 }
 
 //To specify the type of the arguments and their name
-String saludar({ String texto, String nombre }) {
+String saludarWithoutTypesSpecified({ String texto, String nombre }) {
 //   print('Hola');
   return '$texto $nombre';
 }

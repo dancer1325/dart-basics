@@ -2,7 +2,7 @@ void main() {
   
   //To create dynamic list without type specified
   List dynamicList = [1,2,3,4,5];
-  dynamicList.add("Hola Alfredo")
+  dynamicList.add("Hola Alfredo");
   print(dynamicList);
 
   List<int> numeros = [1,2,3,4,5];
@@ -20,7 +20,7 @@ void main() {
   //Another way to initialize a List is with the variable new
   //List anotherWay = new List(10);
   print( masNumeros );
-//   masNumeros.add(1); Esto no es correcto
+//   masNumeros.add(1); Esto no es correcto, since we have specified the size
   masNumeros[0] = 1;
   print( masNumeros );
   
