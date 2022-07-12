@@ -1,4 +1,4 @@
-
+// Default method executed by all .dart files
 void main() {
   
 Map dynamicPerson = {

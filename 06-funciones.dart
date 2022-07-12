@@ -1,3 +1,4 @@
+// Default method executed by all .dart files
 void main() {
   
   String mensaje = saludar2( nombre: 'Fernando', texto: 'Hola,'  );

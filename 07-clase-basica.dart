@@ -1,3 +1,4 @@
+// Default method executed by all .dart files
  void main() {
   
   //The type of the variable, coming from an instance of one class is intuited. Printing is just an instance of the class

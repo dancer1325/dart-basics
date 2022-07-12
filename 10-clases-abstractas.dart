@@ -1,3 +1,4 @@
+// Default method executed by all .dart files
 void main() {
   
  //Abstract classes doesn’t allow creating instances of that class. Neither new nor default constructor

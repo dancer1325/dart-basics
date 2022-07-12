@@ -1,3 +1,4 @@
+// Default method executed by all .dart files
 void main() {
   
   //To create dynamic list without type specified
