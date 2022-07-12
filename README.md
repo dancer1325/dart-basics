@@ -15,4 +15,4 @@ Un repositorio con los ejercicios de reforzamiento de Dart para el curso de Flut
 # Notes:
 * Typed language
     * If a variable isn't initialized --> It will be null
-    
+* All lines closes with ';'    
