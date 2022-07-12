@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// Default method executed by all .dart files
+// Default entrance method executed by all .dart files
 void main() {
   
 //   final wolverine = new Heroe('Logan', 'Regeneración');

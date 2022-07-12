@@ -1,4 +1,4 @@
-// Default method executed by all .dart files
+// Default entrance method executed by all .dart files
 void main() {
   
   /*
@@ -8,7 +8,7 @@ void main() {
   a
   sdasd
   */
-  
+
   // Ways to concatenate Strings:
   String nombre = "Alfredo"; // Here you can see that you can use ' or "
 
