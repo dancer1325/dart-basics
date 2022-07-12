@@ -15,6 +15,9 @@ void main() {
   // 2. '
   String name2 = 'Alfredo2';
 
+  // String is a class in dart -->
+  // 1. S in capital letter
+
   // Ways to concatenate Strings:
   // 1.Classic one
   print('Hola ' + name);
