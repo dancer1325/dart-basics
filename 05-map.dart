@@ -17,14 +17,14 @@ void main() {
     'edad': 32,
     'soltero': true
   };
-  // TODO: How does an interpolation with ' or " work?
-  // print('persona[\'nombre\'\] $persona\[\'nombre\'\]');
   var name = persona['nombre'];
   var age = persona['edad'];
   var isSingle = persona['soltero'];
   print('name $name');
   print('age $age');
   print('isSingle $isSingle');
+  // Without declaring a variable, an making the interpolation of an expression, using {}
+  print('persona[\'nombre\'\] ${persona['nombre']}');
 
   Map<int, String> personas = {1: 'Tony', 2: 'Peter', 9: 'Strange'};
 
@@ -42,5 +42,5 @@ void main() {
   print('personas $personas');
 
   //To get the value of one entrance, you need to specify the key
-  print(personas[2]);
+  print("personas[2] ${personas[2]}");
 }
