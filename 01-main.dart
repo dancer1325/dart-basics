@@ -9,13 +9,21 @@ void main() {
   sdasd
   */
 
+  // Ways to declare String
+  // 1. "
+  String name = "Alfredo";
+  // 2. '
+  String name2 = 'Alfredo2';
+
   // Ways to concatenate Strings:
-  String nombre = "Alfredo"; // Here you can see that you can use ' or "
-
   // 1.Classic one
-  print('Hola ' + nombre);
+  print('Hola ' + name);
 
-  // 2.Dart one
-  print('Hola $nombre');
+  // 2.Interpolation
+  print('Hola $name2');
+
+  // Once you initialize the variable --> Types are inferred
+  var name3 = 'Alfredo3';
+  print(name3.runtimeType);
   
 }
