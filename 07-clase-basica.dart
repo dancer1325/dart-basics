@@ -1,71 +1,159 @@
 // Default entrance method executed by all .dart files
- void main() {
-  
-  //The type of the variable, coming from an instance of one class is intuited. Printing is just an instance of the class
-  //var wolverineWithoutSpecifyingType = new Heroe();
-  //print(wolverineWithoutSpecifyingType);
+void main() {
+  //The type of the variable, coming from an instance of one class is intuited.
+  var heroWithoutConstructor = new HeroWithoutConstructor();
+  print(
+      "heroWithoutConstructor $heroWithoutConstructor"); // Printing is just an instance of the class
+  print(
+      "heroWithoutConstructor.runtimeType ${heroWithoutConstructor.runtimeType}");
+  print(
+      "heroWithoutConstructor.toString() ${heroWithoutConstructor.toString()}"); // Same result as the interpolation itself
 
-  //Specifying the type of the variable. Printing is just an instance of the class
-  //Heroe wolverineIndicatingType = new Heroe();
-  //print(wolverineIndicatingType);
-  
-  //To invoke the constructor without name arguments
-  var wolveringConstructorIndicatingTypeOfArguments = new Heroe('Logan', 'Regeneracion');
-   
-   //To invoke the constructor with name arguments, missing some of them 
-   //var wolveringConstructorIndicatingTypeAndNameOfArguments = new Heroe(poder: 'Regeneracion');
-  
+  //The type of the variable, coming from an instance of one class is intuited.
+  var heroWithEmptyConstructor = new HeroWithEmptyConstructor();
+  print(
+      "heroWithEmptyConstructor $heroWithEmptyConstructor"); // Printing is just an instance of the class
+  print(
+      "heroWithEmptyConstructor.runtimeType ${heroWithEmptyConstructor.runtimeType}");
+  print(
+      "heroWithEmptyConstructor.toString() ${heroWithEmptyConstructor.toString()}"); // Same result as the interpolation itself
+
+  // Instantiate a class, without using new keyword
+  var heroWithoutBeingInstantiatedByNew = HeroWithEmptyConstructor();
+  print(
+      "heroWithoutBeingInstantiatedByNew $heroWithoutBeingInstantiatedByNew"); // Printing is just an instance of the class
+  print(
+      "heroWithoutBeingInstantiatedByNew.runtimeType ${heroWithoutBeingInstantiatedByNew.runtimeType}");
+  print(
+      "heroWithoutBeingInstantiatedByNew.toString() ${heroWithoutBeingInstantiatedByNew.toString()}"); // Same result as the interpolation itself
+  // var --> You can instantiate or modifying it's value continuously
+  heroWithoutBeingInstantiatedByNew = HeroWithEmptyConstructor();
+
+  // final variable can't be adjusted
+  final finalHeroInstantiated = HeroWithEmptyConstructor();
+  // finalHeroInstantiated = HeroWithEmptyConstructor();      // It's wrong
+  // vs constant in compilation time
+
+  // Several constructors can be defined for each class
+  var heroWithSeveralConstructors = HeroWithSeveralConstructors();
+  var heroWithSeveralConstructorsAnotherName =
+      HeroWithSeveralConstructors.AnotherName(3);
+
+  //Specifying the type of the variable
+  HeroWithoutConstructor heroSpecifyingTypeOfInstance =
+      new HeroWithoutConstructor();
+  print("heroSpecifyingTypeOfInstance $heroSpecifyingTypeOfInstance");
+  print(
+      "heroSpecifyingTypeOfInstance.runtimeType ${heroSpecifyingTypeOfInstance.runtimeType}");
+  print(
+      "heroSpecifyingTypeOfInstance.toString() ${heroSpecifyingTypeOfInstance.toString()}");
+
+  // Based on position of the arguments
+  var heroBasedOnArgumentsPosition =
+      new Hero.constructorBasedOnArgumentsPosition('Logan', 'Regenerate');
+  print("heroBasedOnArgumentsPosition $heroBasedOnArgumentsPosition");
+  print(
+      "heroBasedOnArgumentsPosition.runtimeType ${heroBasedOnArgumentsPosition.runtimeType}");
+  print(
+      "heroBasedOnArgumentsPosition.toString() ${heroBasedOnArgumentsPosition.toString()}");
+
+  // Specifying the name arguments
+  // If an attribute is handled the null, but we don't pass via initialization --> We get an error in compilation time
+  // var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(poder: 'Regeneracion');
+  var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(nombre: 'Alfredo', poder: 'Handsome');
+  print("heroSpecifyingArgumentsName $heroSpecifyingArgumentsName");
+  print(
+      "heroSpecifyingArgumentsName.runtimeType ${heroSpecifyingArgumentsName.runtimeType}");
+  print(
+      "heroSpecifyingArgumentsName.toString() ${heroSpecifyingArgumentsName.toString()}");
+
+  // Short way assigning by position
+  var heroAssigningByPosition = new Hero.constructorAssigningByPosition();
+  print("heroAssigningByPosition $heroAssigningByPosition");
+  print(
+      "heroAssigningByPosition.runtimeType ${heroAssigningByPosition.runtimeType}");
+  print(
+      "heroAssigningByPosition.toString() ${heroAssigningByPosition.toString()}");
+
   //To get the properties to the instance of the class
-  print(wolveringConstructorIndicatingTypeOfArguments.nombre);
+  // print(wolveringConstructorIndicatingTypeOfArguments.nombre);
 
-//  final wolverine = new Heroe( 
-//    poder: 'Regeneración',
-//    nombre: 'Logan'
-  //);
-    
-  print( wolveringConstructorIndicatingTypeOfArguments );
-  
+  // print( wolveringConstructorIndicatingTypeOfArguments );
 }
 
-class Heroe {
-  
-  String nombre;
-  String poder;
+// Name convention.
+// First letter of the class is in capital
+class HeroWithoutConstructor {
+  // If you don't specify it, a class has got by default the empty one
+}
 
-  //Heroe() {
-  //
-  //}
-  
+class HeroWithEmptyConstructor {
+  // NameOfTheConstructor == NameOfTheClass
+  HeroWithEmptyConstructor();
+}
+
+// Class with several constructors https://dart.dev/tools/diagnostic-messages#duplicate_constructor
+class HeroWithSeveralConstructors {
+  int x = 0;
+
+  HeroWithSeveralConstructors() {
+    print("HeroWithSeveralConstructors");
+  }
+
+  HeroWithSeveralConstructors.AnotherName(this.x) {
+    print("HeroWithSeveralConstructors.AnotherName and x value $x");
+  }
+}
+
+class Hero {
+  //  https://dart.dev/guides/language/language-tour#late-variables
+  // Reason to use it https://dart.dev/tools/diagnostic-messages#not_initialized_non_nullable_instance_field
+  late String nombre = "Patricia";
+  late String poder;
+  late String name2;
+  String? name3;
+  late String name4;
+
   //Constructor indicating the type of arguments but without specifying the name of each argument
-  Heroe( String nombre , String poder ) {
-    this.nombre = nombre;
-    this.poder  = poder; 
+  Hero.constructorBasedOnArgumentsPosition(String name, String power) {
+    this.nombre = name;
+    this.poder = power;
+
+    // Specify the non-initialized fields
+    this.name2 = "";
+    this.name4 = "";
   }
 
   //Constructor with name arguments
-  //   Heroe({ String nombre , String poder }) {
-//     this.nombre = nombre;
-//     this.poder  = poder; 
-//   }
-  
-  //Constructor with name arguments, specifying a default value for one of the properties
-//   Heroe({ String nombre = 'Sin Nombre', String poder }) {
-//     this.nombre = nombre;
-//     this.poder  = poder; 
-//   }
-  
-  //Short way to assign the properties by position. It's not possible to indicate a default value
-  // Heroe({ this.nombre, this.poder });
-  
-   String toString() {
-     //Take care getting the value with $, because they are like the order of the operations
-     //return '$this.nombre $this.poder';
-     return '${ this.nombre } ${this.poder}';
-   }
-  
-  //It's not mandatory to use this
-  // String toString() => 'nombre: $nombre - poder: $poder';
-  
+  // https://dart.dev/tools/diagnostic-messages#missing_default_value_for_parameter
+    Hero.constructorSpecifyingArgumentsName({ String? nombre , String poder = 'Handsome'}) {
+    this.name2 = nombre!;
+    this.name3 = nombre;
+    this.name4 = nombre;
+    this.poder  = poder;
+  }
+
+  //Short way to assign the properties by position
+  // Required to indicate the non-initialized attributes
+  Hero.constructorAssigningByPosition({ this.name3, this.poder='Love', this.name2 = 'Guaperas', this.name4 = 'Guaperas4' });
+
+  String toString() {
+    //Take care getting the value with $, because they are like the order of the operations
+    final nombre = checkIfVariableExists(this.nombre);
+    final poder = checkIfVariableExists(this.poder);
+    final name2 = checkIfVariableExists(this.name2);
+    final name3 = checkIfVariableExists(this.name3);
+    final name4 = checkIfVariableExists(this.name4);
+    return 'nombre ${nombre} poder ${poder} name2 ${name2} name3 ${name3} name4 ${name4}';
+  }
+
+//It's not mandatory to use this
+// String toString() => 'nombre: $nombre - poder: $poder';
 }
 
-
+String checkIfVariableExists(String? variableToCheck) {
+  if(variableToCheck != null) {
+    return variableToCheck;
+  }
+  return "";
+}
