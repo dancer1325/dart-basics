@@ -12,12 +12,14 @@ void main() {
   String messageWithTypesSpecifiedAsObjectOptional = saludarWithTypesSpecifiedAsObjectOptional(nombre:  'Fermando',texto: 'Hola');
   // String messageWithTypesSpecifiedAsObjectOptional = saludarWithTypesSpecifiedAsObjectOptional(nombre:  'Fermando');        // Arguments are optionals
   String message = saludar2(nombre: 'Fernando', texto: 'Hola,');
+  String message3 = saludar3(nombre: 'Fernando', texto: 'Hola,');
 
   print("messageWithoutSpecifyinArgumentType $messageWithoutSpecifyingArgumentType");
   print("messageSpecifyingArgumentType $messageSpecifyingArgumentType");
   print("messageWithTypesSpecifiedAsObjectRequired $messageWithTypesSpecifiedAsObjectRequired");
   print("messageWithTypesSpecifiedAsObjectOptional $messageWithTypesSpecifiedAsObjectOptional");
   print("message $message");
+  print("message3 $message3");
 }
 
 // Functions can be created outside main()
@@ -49,3 +51,6 @@ String saludarWithTypesSpecifiedAsObjectOptional({String? texto, String? nombre}
 //Arrow functions
 // Also here it's necessary to mark as optional or required
 String saludar2({String? texto, String? nombre}) => 'saludar2 $texto $nombre';
+
+// Unnecessary to indicate the return type, it can be inferred
+saludar3({String? texto, String? nombre}) => 'saludar3 $texto $nombre';
