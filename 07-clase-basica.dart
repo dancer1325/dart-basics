@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 // Default entrance method executed by all .dart files
 void main() {
   //The type of the variable, coming from an instance of one class is intuited.
@@ -75,10 +77,34 @@ void main() {
   print(
       "heroAssigningByPosition.toString() ${heroAssigningByPosition.toString()}");
 
-  //To get the properties to the instance of the class
-  // print(wolveringConstructorIndicatingTypeOfArguments.nombre);
+  final rawJson    = '{ "nombre": "Alfredo", "poder":"Flirtd" }';
+  print("rawJson $rawJson");
+  print("rawJson.runtimeType ${rawJson.runtimeType}");
+  print("rawJson.toString() ${rawJson.toString()}");
 
-  // print( wolveringConstructorIndicatingTypeOfArguments );
+  //Normally it returns a Map<dynamic, dynamic>
+  Map parsedJson = json.decode( rawJson);
+  //To print the string of the json decoded, which is a Map
+  print( "parsedJson $parsedJson" );
+  print( "parsedJson.runtimeType ${parsedJson.runtimeType}" );
+  print( "parsedJson.toString() ${parsedJson.toString()}" );
+
+  //To use the name constructor
+  final heroFromJsonWithoutSpecifyingTheType = new Hero.fromJsonWithoutSpecifyingTheType( parsedJson );
+  print("heroFromJsonWithoutSpecifyingTheType $heroFromJsonWithoutSpecifyingTheType");
+  print(
+      "heroFromJsonWithoutSpecifyingTheType.runtimeType ${heroFromJsonWithoutSpecifyingTheType.runtimeType}");
+  print(
+      "heroFromJsonWithoutSpecifyingTheType.toString() ${heroFromJsonWithoutSpecifyingTheType.toString()}");
+
+  //To use the name constructor
+  final heroFromJson = new Hero.fromJson( parsedJson );
+  print("heroFromJson $heroFromJson");
+  print(
+      "heroFromJson.runtimeType ${heroFromJson.runtimeType}");
+  print(
+      "heroFromJson.toString() ${heroFromJson.toString()}");
+
 }
 
 // Name convention.
@@ -136,6 +162,29 @@ class Hero {
   //Short way to assign the properties by position
   // Required to indicate the non-initialized attributes
   Hero.constructorAssigningByPosition({ this.name3, this.poder='Love', this.name2 = 'Guaperas', this.name4 = 'Guaperas4' });
+
+  // Constructor to create an instance from a raw json
+  Hero.fromJsonWithoutSpecifyingTheType( parsedJson ) {
+  //  Extract the values from a map
+  nombre = parsedJson['nombre'];
+  poder  = parsedJson['poder'];
+  // Specify the non-initialized fields
+  this.name2 = "";
+  this.name4 = "";
+  }
+
+  // Constructor to create an instance from a map json
+  Hero.fromJson( Map parsedJson ) {
+    //  Since parsedJson is a Map, you use [] to get the values with the name of the key that you get from the json
+    //  Extract the values from a map
+    nombre = parsedJson['nombre'];
+    poder  = parsedJson['poder'];
+
+    // Specify the non-initialized fields
+    this.name2 = "";
+    this.name4 = "";
+
+  }
 
   String toString() {
     //Take care getting the value with $, because they are like the order of the operations
