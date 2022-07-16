@@ -1,6 +1,5 @@
 // Default entrance method executed by all .dart files
 void main() async {
-  
 	print('Estamos a punto de pedir datos');
   
   //An alternative when you have got async calls, is to change the next code into then; to be executed when it spends the time
@@ -20,10 +19,7 @@ void main() async {
   print('Ultima línea');
 }
 
-
-
 Future<String> httpGet(String url) {
-  
   return Future.delayed( new Duration( seconds: 4 ), () {
     return 'Hola Mundo';
   });
