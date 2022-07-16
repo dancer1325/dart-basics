@@ -1,36 +1,47 @@
 // Default entrance method executed by all .dart files
 void main() {
   
-  final superman = new Heroe();
-  //As Heroe extends to Personaje, it contains also those properties
-  superman.nombre = 'Clark Kent';
+  final superman = new Hero();
+  //As Hero extends to Character, it contains also those properties
+  // Unnecessary create setter methods for public attributes
+  superman.name = 'Clark Kent';
+  print(superman.toString());
   
-  final luthor = new Villano();
-  luthor.nombre  = 'Lex Luthor';
-  
-  
+  final luthor = new Villain();
+  // Unnecessary create setter methods for public attributes
+  luthor.name  = 'Lex Luthor';
+  print(luthor.toString());
 }
 
-//It's not necessary that the class is abstract to have the posibility to extend or to implement
-// class Personaje {
-//   String poder;
-//   String nombre;
-// }
-
-//It's done abstract in order to avoid creating instance of Personaje
-abstract class Personaje {
-  String poder;
-  String nombre;
+// To extend or to implement, is unnecessary to come from an abstract class
+class CharacterNotAbstract {
+  late String power;
+  late String name;
 }
 
+//It's done abstract in order to avoid creating instance of Character
+abstract class Character {
+  late String power;
+  late String name;
 
-class Heroe extends Personaje { 
-	
-  int valentia;
-
+  String toString() {
+    return "name $name";
+  }
 }
 
-class Villano extends Personaje {
+// Since you extend --> You don't need to override or indicate characteristics coming from base one (Contrary to implementation one)
+class Hero extends Character {
+  late int courage = 5;
 
-  int maldad;
+  String toString() {
+    return "super.toString() ${super.toString()} courage $courage";
+  }
+}
+
+class Villain extends Character {
+  late int evil = 9;
+
+  String toString() {
+    return "super.toString() ${super.toString()} evil $evil";
+  }
 }
