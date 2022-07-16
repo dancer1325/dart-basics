@@ -1,13 +1,11 @@
-// Default entrance method executed by all .dart files
+// Default entrance ddmethod executed by all .dart files
 void main() {
   
 	print('Estamos a punto de pedir datos');
   
   //Allows using the resolution of the Future
   httpGet('https://api.nasa.com/aliens').then( (data) {
-    
-    print( data );
-    
+    print( "data $data" );
   });
   
   //The execution continues, without waiting for the another response
@@ -24,9 +22,7 @@ void main() {
 // }
 
 Future<String> httpGet(String url) {
-  
   return Future.delayed( new Duration( seconds: 4 ), () {
     return 'Hola Mundo';
   });
-  
 }
