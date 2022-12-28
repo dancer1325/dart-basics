@@ -11,12 +11,13 @@ void main() {
   // Unnecessary create setter methods for public attributes
   luthor.name  = 'Lex Luthor';
   print(luthor.toString());
-}
 
-// To extend or to implement, is unnecessary to come from an abstract class
-class CharacterNotAbstract {
-  late String power;
-  late String name;
+  final friendExtends = FriendExtends();
+  print(friendExtends.toString());
+
+  final friendImplements = FriendImplements("power", "FriendImplements");
+  print(friendImplements.toString());
+
 }
 
 //It's done abstract in order to avoid creating instance of Character
@@ -44,4 +45,45 @@ class Villain extends Character {
   String toString() {
     return "super.toString() ${super.toString()} evil $evil";
   }
+}
+
+// To extend or to implement, is unnecessary to come from an abstract class
+class CharacterNotAbstract {
+  late String power;
+  late String name;
+}
+
+// Extending from a non-abstract class
+class FriendExtends extends CharacterNotAbstract {
+  int numberOfFriends = 2;
+
+  FriendExtends() {
+    // Unnecessary to use this
+    power = '10';
+    name = 'Friend';
+  }
+
+  String toString() {
+    return "FriendExtends.toString() : name $name, power $power and numberOfFriends $numberOfFriends";
+  }
+}
+
+// Implementing from a non-abstract class
+class FriendImplements implements CharacterNotAbstract {
+  String name;
+  String power;
+  int numberOfFriends = 2;
+
+  // https://dart.dev/tools/diagnostic-messages?utm_source=dartdev&utm_medium=redir&utm_id=diagcode&utm_content=not_initialized_non_nullable_instance_field#not_initialized_non_nullable_instance_field
+  FriendImplements(this.power, this.name) {
+    // Unnecessary to use this
+    power = this.power;
+    name = this.name;
+  }
+
+  String toString() {
+    return "FriendImplements.toString() : name $name, power $power and numberOfFriends $numberOfFriends";
+  }
+
+
 }
