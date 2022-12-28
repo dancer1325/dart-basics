@@ -33,5 +33,10 @@ void main() {
   // Possible to modify the value of an element
   list[0] = 1;
   print( "list $list" );
-  
+
+  // List<List<....>>
+  List<int> numberList = List.filled(2, 2);
+  List<List<int>> listOfList = List.filled(2, numberList);
+  print("numberList $numberList");
+  print("listOfList $listOfList");
 }
