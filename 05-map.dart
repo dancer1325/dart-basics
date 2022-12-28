@@ -1,30 +1,39 @@
 // Default entrance method executed by all .dart files
 void main() {
   // Dynamic key and value types
-  Map dynamicPerson = {'nombre': 'Carlos', 'edad': 32, 'soltero': true};
+  Map dynamicPerson = {'name': 'Carlos', 'age': 32, 'single': true};
 
   //To get a value isn't as another languages using a . because it only shows the specific methods for the Map class
-  //print(dynamicPerson.nombre);
+  //print(dynamicPerson.name);
 
   // Inferring the type without specifying the key / value 's types, are dynamic
-  print('dynamicPerson.runtimeType $dynamicPerson.runtimeType');
+  // ${}    if you want to evaluate a expression
+  print('dynamicPerson.runtimeType ${dynamicPerson.runtimeType}');
 
   //Variable with the value of the map's key
-  String propiedad = 'soltero';
+  String property = 'single';
 
   Map<String, dynamic> persona = {
-    'nombre': 'Carlos',
-    'edad': 32,
-    'soltero': true
+    // Indentation is ignored by Dart
+         'name': 'Carlos',
+    'age': 32,
+    'single': true
   };
-  var name = persona['nombre'];
-  var age = persona['edad'];
-  var isSingle = persona['soltero'];
+
+  // Get map's elements by key
+  var name = persona['name'];
+  var age = persona['age'];
+  var isSingle = persona['single'];
   print('name $name');
   print('age $age');
   print('isSingle $isSingle');
-  // Without declaring a variable, an making the interpolation of an expression, using {}
-  print('persona[\'nombre\'\] ${persona['nombre']}');
+
+  // Get non existing key
+  var nonExistingKey = persona['nonExistingKey'];
+  print('nonExistingKey $nonExistingKey');
+
+  // Without declaring the variable, and making the interpolation of an expression, using {}
+  print('persona[\'name\'\] ${persona['name']}');
 
   Map<int, String> personas = {1: 'Tony', 2: 'Peter', 9: 'Strange'};
 
@@ -41,6 +50,7 @@ void main() {
 
   print('personas $personas');
 
-  //To get the value of one entrance, you need to specify the key
+  //Get the value of one entrance, you need to specify the key
   print("personas[2] ${personas[2]}");
+
 }
