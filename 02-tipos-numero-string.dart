@@ -2,33 +2,36 @@
 void main() {
   
 //   	Numbers
-  int empleados = 10;
+  int employees = 10;
   
   //Error defining variables incorrectly 
-  //int empleados = 10.0;
+  //int employees = 10.0;
 
   double pi = 3.141592;
 
   //If we don't specify the type of variable --> it's inferred
-  var numero = 1.0;
+  var number = 1.0;
 
-  // Interpolation to get the variable's value
-  print( '$empleados - $pi - $numero' );
+  // Interpolation to get the variable's value -- no math operation is executed --
+  print( '$employees - $pi - $number' );
   
-  //   String - Cadenas de caracteres
-  // No required / , to display special characters
-  String nombre = 'Tony';
-  String nombreWithDouble = "Tony";
-  String nombreWithDoubleAndSimpleInTheMiddle1Try = "To'ny";
-  String nombreWithDoubleAndSimpleInTheMiddle2Try = "To\'ny";
-  String nombreWithSimpleAndDoubleInTheMiddle1Try = 'To"ny';
-  String nombreWithSimpleAndDoubleInTheMiddle2Try = 'To\"ny';
+  //   String - Chain of characters
+  // No required \ , to display special characters
+  String name = 'Tony';
+  String nameWithDoubleQuotes = "Tony";
 
-  print(nombreWithDoubleAndSimpleInTheMiddle1Try + " or " + nombreWithDoubleAndSimpleInTheMiddle2Try);
-  print(nombreWithSimpleAndDoubleInTheMiddle1Try + " or " + nombreWithSimpleAndDoubleInTheMiddle2Try);
+  print(name + ' or ' + nameWithDoubleQuotes);
 
-  print(nombre + ' or ' + nombreWithDouble);
-  print(nombre[0]);
-  print(nombre[ nombre.length - 1 ]);
+  String nameWithDoubleAndSimpleInTheMiddle1Try = "To'ny";
+  String nameWithDoubleAndSimpleInTheMiddle2Try = "To\'ny";
+  String nameWithSimpleAndDoubleInTheMiddle1Try = 'To"ny';
+  String nameWithSimpleAndDoubleInTheMiddle2Try = 'To\"ny';
+
+  print("nameWithDoubleAndSimpleInTheMiddle1Try: " + nameWithDoubleAndSimpleInTheMiddle1Try + " or " + "nameWithDoubleAndSimpleInTheMiddle2Try: " + nameWithDoubleAndSimpleInTheMiddle2Try);
+  print("nameWithSimpleAndDoubleInTheMiddle1Try: " + nameWithSimpleAndDoubleInTheMiddle1Try + " or " + "nameWithSimpleAndDoubleInTheMiddle2Try: " + nameWithSimpleAndDoubleInTheMiddle2Try);
+
+  // String as chain of characters, allow getting each character
+  print(name[0]);
+  print(name[ name.length - 1 ]);
   
 }
