@@ -42,6 +42,7 @@ void main() {
       HeroWithSeveralConstructors.AnotherName(3);
 
   //Specifying the type of the variable
+  // Get same results as letting be inferred
   HeroWithoutConstructor heroSpecifyingTypeOfInstance =
       new HeroWithoutConstructor();
   print("heroSpecifyingTypeOfInstance $heroSpecifyingTypeOfInstance");
@@ -61,8 +62,8 @@ void main() {
 
   // Specifying the name arguments
   // If an attribute is handled the null, but we don't pass via initialization --> We get an error in compilation time
-  // var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(poder: 'Regeneracion');
-  var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(nombre: 'Alfredo', poder: 'Handsome');
+  // var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(power: 'Regeneration');
+  var heroSpecifyingArgumentsName = new Hero.constructorSpecifyingArgumentsName(name: 'Alfredo', power: 'Handsome');
   print("heroSpecifyingArgumentsName $heroSpecifyingArgumentsName");
   print(
       "heroSpecifyingArgumentsName.runtimeType ${heroSpecifyingArgumentsName.runtimeType}");
@@ -77,7 +78,7 @@ void main() {
   print(
       "heroAssigningByPosition.toString() ${heroAssigningByPosition.toString()}");
 
-  final rawJson    = '{ "nombre": "Alfredo", "poder":"Flirtd" }';
+  final rawJson    = '{ "name": "Alfredo", "power":"Flirt" }';
   print("rawJson $rawJson");
   print("rawJson.runtimeType ${rawJson.runtimeType}");
   print("rawJson.toString() ${rawJson.toString()}");
@@ -110,7 +111,7 @@ void main() {
 // Name convention.
 // First letter of the class is in capital
 class HeroWithoutConstructor {
-  // If you don't specify it, a class has got by default the empty one
+  // If you don't specify a constructor, a class has got by default the empty one
 }
 
 class HeroWithEmptyConstructor {
@@ -134,40 +135,41 @@ class HeroWithSeveralConstructors {
 class Hero {
   //  https://dart.dev/guides/language/language-tour#late-variables
   // Reason to use it https://dart.dev/tools/diagnostic-messages#not_initialized_non_nullable_instance_field
-  late String nombre = "Patricia";
-  late String poder;
+  late String name = "Patricia";
+  late String power;
   late String name2;
-  String? name3;
+  String? name3;    // Unnecessary to mark as late, since it's optional
   late String name4;
 
   //Constructor indicating the type of arguments but without specifying the name of each argument
   Hero.constructorBasedOnArgumentsPosition(String name, String power) {
-    this.nombre = name;
-    this.poder = power;
+    this.name = name;
+    this.power = power;
 
-    // Specify the non-initialized fields
+    // Specify the required non-initialized fields
     this.name2 = "";
     this.name4 = "";
+    // Unnecessary to initialize name3, because it's optional
   }
 
   //Constructor with name arguments
   // https://dart.dev/tools/diagnostic-messages#missing_default_value_for_parameter
-    Hero.constructorSpecifyingArgumentsName({ String? nombre , String poder = 'Handsome'}) {
-    this.name2 = nombre!;
-    this.name3 = nombre;
-    this.name4 = nombre;
-    this.poder  = poder;
+  Hero.constructorSpecifyingArgumentsName({ String? name , String power = 'Handsome'}) {
+    this.name2 = name!;   // !  Assertion operator, to force to Dart to treat as non-nullable, a nullable expression
+    this.name3 = name;
+    this.name4 = name;
+    this.power  = power;
   }
 
   //Short way to assign the properties by position
   // Required to indicate the non-initialized attributes
-  Hero.constructorAssigningByPosition({ this.name3, this.poder='Love', this.name2 = 'Guaperas', this.name4 = 'Guaperas4' });
+  Hero.constructorAssigningByPosition({ this.name3, this.power='Love', this.name2 = 'Guaperas', this.name4 = 'Guaperas4' });
 
   // Constructor to create an instance from a raw json
   Hero.fromJsonWithoutSpecifyingTheType( parsedJson ) {
   //  Extract the values from a map
-  nombre = parsedJson['nombre'];
-  poder  = parsedJson['poder'];
+  name = parsedJson['name'];
+  power  = parsedJson['power'];
   // Specify the non-initialized fields
   this.name2 = "";
   this.name4 = "";
@@ -177,8 +179,8 @@ class Hero {
   Hero.fromJson( Map parsedJson ) {
     //  Since parsedJson is a Map, you use [] to get the values with the name of the key that you get from the json
     //  Extract the values from a map
-    nombre = parsedJson['nombre'];
-    poder  = parsedJson['poder'];
+    name = parsedJson['name'];
+    power  = parsedJson['power'];
 
     // Specify the non-initialized fields
     this.name2 = "";
@@ -188,12 +190,12 @@ class Hero {
 
   String toString() {
     //Take care getting the value with $, because they are like the order of the operations
-    final nombre = checkIfVariableExists(this.nombre);
-    final poder = checkIfVariableExists(this.poder);
+    final name = checkIfVariableExists(this.name);
+    final power = checkIfVariableExists(this.power);
     final name2 = checkIfVariableExists(this.name2);
     final name3 = checkIfVariableExists(this.name3);
     final name4 = checkIfVariableExists(this.name4);
-    return 'nombre ${nombre} poder ${poder} name2 ${name2} name3 ${name3} name4 ${name4}';
+    return 'name ${name} power ${power} name2 ${name2} name3 ${name3} name4 ${name4}';
   }
 
 //It's not mandatory to use this
