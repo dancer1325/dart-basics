@@ -1,7 +1,9 @@
-// Default entrance method executed by all .dart files
+// 1. Default entrance method executed by all .dart files
+// 2. VariableToReturn main() {}
+// 3. Required by all dart programs
 void main() {
   
-  /*
+  /* Commentary
   print('Hola Mundo');
   asdasd
   asd
@@ -28,5 +30,14 @@ void main() {
   // Once you initialize the variable --> Types are inferred
   var name3 = 'Alfredo3';
   print(name3.runtimeType);
-  
+
+  // print(AString) --> Using any way to declare a String
+  // 1. print('SomethingWithSimpleQuote');
+  print('SomethingWithSimpleQuote');
+
+  // 2. print("SomethingWithDoubleQuotes");
+  print("SomethingWithDoubleQuotes");
+
+  // Sentences ends with ;   , else an error
+  // String name = "Alfredo"
 }
