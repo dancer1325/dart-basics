@@ -4,42 +4,37 @@ void main() {
  //Animal animal = new Animal();
  //Animal animal = Animal();
 
-  //A non-abstract class allow creating instances of classes
+  //A non-abstract class allow creating instances of classes (as any normal class)
   // 1. With new
-  final perro = new Perro();
-  perro.emitirSonido();
+  final dog = new Dog();
+  dog.emitSound();
   // 2. Without new
-  final perroWithoutNew = Perro();
-  perroWithoutNew.emitirSonido();
+  final dogWithoutNew = Dog();
+  dogWithoutNew.emitSound();
   
-  final gato = new Gato();
-  gato.emitirSonido();
+  final cat = new Cat();
+  cat.emitSound();
 }
 
 abstract class Animal {
+  late int legs;
   
-  late int patas;
-  
-  void emitirSonido();
-  
+  void emitSound();
 }
 
-class Perro implements Animal{
+class Dog implements Animal{
+  // It's required to implement the parent's attributes and methods, such as 'int legs' in this case
+  late int legs;
+
+  // Additional attributes can be added
+  late int tails;
+  
+  void emitSound() => print('GUAUUUUU!!');
+}
+
+class Cat implements Animal {
   // It's required to implement the parent's attributes and methods, such as 'int patas' in this case
-  late int patas;
-  late int colas;
+  late int legs;
   
-  void emitirSonido() => print('GUAUUUUU!!');
-  
+  void emitSound() => print('MIAUUUU!!');
 }
-
-class Gato implements Animal {
-  // It's required to implement the parent's attributes and methods, such as 'int patas' in this case
-  late int patas;
-  
-  void emitirSonido() => print('MIAUUUU!!');
-  
-}
-
-
-
