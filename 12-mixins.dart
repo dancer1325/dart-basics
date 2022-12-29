@@ -1,49 +1,49 @@
 abstract class Animal { }
 
-abstract class Mamifero extends Animal { }
+abstract class Mammal extends Animal { }
 
-abstract class Ave extends Animal { }
+abstract class Bird extends Animal { }
 
-abstract class Pez extends Animal { }
+abstract class Fish extends Animal { }
 
 //The next 3 classes are the mixins
-abstract class Volador {
-  void volar() => print('Estoy volando!!');
+abstract class Fly {
+  void fly() => print('I am flying!!');
 }
 
-abstract class Caminante {
-  void caminar() => print('Estoy caminando!!');
+abstract class Walk {
+  void walk() => print('I am walking!!');
 }
 
-abstract class Nadador {
-  void nadar() => print('Estoy nadando!!');
+abstract class Swim {
+  void swim() => print('I am swimming!!');
 }
 
 // ... with NameOfTheMixinClass1, NameOfTheMixinClass2
 // with mixin, you can use any number of classes that you want
-class Delfin extends Mamifero with Nadador {}
+class Dolphin extends Mammal with Swim {}
 
-class Murcielago extends Mamifero with Caminante, Volador {}
+class Bat extends Mammal with Walk, Fly {}
 
-class Gato extends Mamifero with Caminante {}
+class Cat extends Mammal with Walk {}
 
-class Paloma extends Ave with Caminante, Volador {}
+class Dove extends Bird with Walk, Fly {}
 
-class Pato extends Ave with Caminante, Volador, Nadador {}
+class Duck extends Bird with Walk, Fly, Swim {}
 
-class Tiburon extends Pez with Nadador {}
+class Shark extends Fish with Swim {}
 
-class PezVolador extends Pez with Nadador, Volador { }
+class FlyingFish extends Fish with Swim, Fly { }
 
 // Default entrance method executed by all .dart files
 void main() {
   
-  final pato = new Pato();
-  pato.volar();
-  pato.caminar();
-  pato.nadar();
+  final duck = new Duck();
+  duck.fly();
+  duck.walk();
+  duck.swim();
   
-  final pezVolador = new PezVolador();
-  pezVolador.nadar();
+  final flyingFish = new FlyingFish();
+  flyingFish.swim();
 
 }
