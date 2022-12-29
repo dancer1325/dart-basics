@@ -1,12 +1,11 @@
 // Default entrance method executed by all .dart files
 void main() async {
-	print('Estamos a punto de pedir datos');
-  
-  //An alternative when you have got async calls, is to change the next code into then; to be executed when it spends the time
+	print('We are close to ask for data');
+
+//An alternative when you have got async calls, is to change the next code into then; to be executed when it spends the time
 // httpGet('https://api.nasa.com/aliens').then( (data) {
-    
 //     print( data );
-//     print('Ultima línea');  
+//     print('Last line');
 //   });
 
   //We get an error because httpGet returns Future<String>
@@ -16,12 +15,12 @@ void main() async {
   
   print( data );
   
-  print('Ultima línea');
+  print('Last line');
 }
 
 Future<String> httpGet(String url) {
   return Future.delayed( new Duration( seconds: 4 ), () {
-    return 'Hola Mundo';
+    return 'Hello World!!';
   });
   
 }
