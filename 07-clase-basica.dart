@@ -40,6 +40,7 @@ void main() {
   var heroWithSeveralConstructors = HeroWithSeveralConstructors();
   var heroWithSeveralConstructorsAnotherName =
       HeroWithSeveralConstructors.AnotherName(3);
+  HeroWithSeveralConstructors.InitializerList();
 
   //Specifying the type of the variable
   // Get same results as letting be inferred
@@ -129,6 +130,12 @@ class HeroWithSeveralConstructors {
 
   HeroWithSeveralConstructors.AnotherName(this.x) {
     print("HeroWithSeveralConstructors.AnotherName and x value $x");
+  }
+
+  // https://dart.dev/language/constructors#initializer-list
+  // Initialize instance variables, before constructor body runs
+  HeroWithSeveralConstructors.InitializerList() : x = 10 {
+    print("HeroWithSeveralConstructors.InitializerList and x value $x");
   }
 }
 
